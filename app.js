@@ -8,6 +8,7 @@ const items = [];
 
 app.set('view engine', "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
 app.get('/', (req, res) => {
     const today = new Date();
@@ -28,7 +29,6 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const newItem = req.body.newItem;
     items.push(newItem);
-    console.log(newItem);
 
     res.redirect('/');
 })
